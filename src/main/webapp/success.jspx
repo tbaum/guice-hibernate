@@ -1,0 +1,11 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml" version="2.0">
+    <jsp:directive.page contentType="text/html"/>
+
+    <html>
+    <body>
+    created new entry<br/>
+    <a href="list">continue...</a>
+    </body>
+    </html>
+</jsp:root>

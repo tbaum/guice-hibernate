@@ -1,0 +1,70 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns="http://www.w3.org/1999/xhtml" version="2.0">
+    <jsp:directive.page contentType="text/html"/>
+
+    <html>
+    <head>
+        <style type="text/css">
+            label {
+                display: block;
+            }
+
+            input {
+                margin-left: 110px;
+                display: block;
+            }
+
+            #insertLink {
+                margin-left: 110px;
+                color: blue;
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        </style>
+        <script type="text/javascript">
+            function addEntry() {
+                var e = document.createElement("input");
+                e.setAttribute("name", "entries");
+                document.getElementById('entries').parentNode.insertBefore(e, document.getElementById('insertLink'))
+            }
+        </script>
+    </head>
+    <body>
+    <table>
+        <c:forEach items="${list}" var="item">
+            <tr>
+                <td valign="top">
+                    ${item.name}
+                </td>
+                <td>
+                    <ul>
+                        <c:forEach items="${item.entries}" var="e">
+                            <li>${e.name}</li>
+                        </c:forEach></ul>
+                </td>
+            </tr>
+        </c:forEach>
+    </table>
+    <fieldset>
+        <legend>neuer eintrag:</legend>
+        <form action="create">
+
+            <label>
+                Name:
+                <input name="name"/>
+            </label>
+
+            <label id="entries">
+                Entries:
+                <input name="entries"/>
+            </label>
+
+            <a id="insertLink" onclick="addEntry()">[ more ]</a>
+
+            <input type="submit" value="create"/>
+        </form>
+    </fieldset>
+    </body>
+    </html>
+</jsp:root>
